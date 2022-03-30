@@ -3,6 +3,7 @@
 
 from remove_directory import version
 from datetime import date
+from pathlib import Path
 
 
 __author__ = "Борис Верховский"

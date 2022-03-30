@@ -27,7 +27,7 @@ def get_property(property: str, path_to_init_file: pathlib.Path) -> str:
     """
     regex = re.compile(r"{}\s*=\s*[\"'](?P<value>[^\"']*)[\"']".format(property))
     try:
-        with open(path_to_init_file) as initfh:
+        with open(path_to_init_file, encoding="utf-8") as initfh:
             try:
                 result = regex.search(initfh.read()).group("value")
             except AttributeError:
@@ -65,7 +65,7 @@ setup(
             "Operating System :: POSIX :: Linux",
             "Operating System :: MacOS :: MacOS X",
             ],
-        keywords="File management",
+        keywords="rmdir, remove dir, remove directory, recursive",
         package_dir={"": package_dir},
         packages=find_packages(where=package_dir),
         package_data={
@@ -74,8 +74,8 @@ setup(
         python_requires=">=3.9",
         install_requires=requirements,
         entry_points={
-            "console_scripts": [f"{project_name} = {project_name}.__main__:main",
-                ],
+            # "console_scripts": [f"{project_name} = {project_name}.__main__:main",
+                # ],
             },
         platforms=["any"],
     )
